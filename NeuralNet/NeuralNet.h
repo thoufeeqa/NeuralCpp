@@ -54,6 +54,7 @@ public:
 
 private:
 	vector<Layer> layers; //layers_[layerNum][neuronNum]
+	double error;
 
 };
 

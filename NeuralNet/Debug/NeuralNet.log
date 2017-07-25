@@ -1,4 +1,5 @@
-﻿  NeuralNet.cpp
-c:\users\oysterr02\documents\visual studio 2015\projects\neuralnet\neuralnet\neuralnet.cpp(14): warning C4018: '<': signed/unsigned mismatch
-  NeuralNet.vcxproj -> C:\Users\Oysterr02\Documents\Visual Studio 2015\Projects\NeuralNet\Debug\NeuralNet.exe
-  NeuralNet.vcxproj -> C:\Users\Oysterr02\Documents\Visual Studio 2015\Projects\NeuralNet\Debug\NeuralNet.pdb (Full PDB)
+﻿  stdafx.cpp
+  NeuralNet.cpp
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(15): warning C4018: '<': signed/unsigned mismatch
+  NeuralNet.vcxproj -> C:\Users\Oysterr02\Documents\Visual Studio 2015\Projects\NeuralCpp\Debug\NeuralNet.exe
+  NeuralNet.vcxproj -> C:\Users\Oysterr02\Documents\Visual Studio 2015\Projects\NeuralCpp\Debug\NeuralNet.pdb (Full PDB)

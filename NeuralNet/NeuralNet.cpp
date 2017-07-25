@@ -9,13 +9,14 @@
 
 using namespace std;
 
+//*************************	 NEURON	*****************************************
 Neuron::Neuron(unsigned numOuputs, unsigned Index)
 {
 	for (int c = 0; c < numOuputs; ++c)
 	{
 		inputConnections.push_back(Connection());
 		inputConnections.back().weight = randomWeight();
-		//cout << "weight" << inputConnections.back().weight;
+		cout << "weight" << inputConnections.back().weight;
 	}
 
 	myIndex = Index;
@@ -34,6 +35,7 @@ void Neuron::feedForward(const Layer &prevLayer)
 }
 
 
+//***************************************	NET	 ****************************************************
 Net::Net(const vector<unsigned> &topology)
 {
 	unsigned totalLayers = topology.size();
@@ -75,8 +77,18 @@ void Net::feedForward(const vector<double> &inputValues)
 
 void Net::backprop(const vector<double> &targetValues)
 {
+	//get root mean square error
+	Layer &outputLayer = layers.back();
+	error = 0.0;
 
+	for (unsigned n = 0; n < outputLayer.size() - 1; ++n)
+	{
+		double delta = targetValues[n] - outputLayer[n].getOutputValue();
+		error += delta*delta;
+	}
 
+	error = error / (outputLayer.size() - 1);
+	error = sqrt(error);
 }
 
 
