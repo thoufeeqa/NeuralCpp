@@ -23,6 +23,10 @@ public:
 	
 	void setOutputValue(double input) { outputValue = input; }
 	double getOutputValue() const { return outputValue; }
+	void calcOutputGradients(double targetVal);
+	void calcHiddenGradients(const Layer &nextLayer);
+	double sumDOW(const Layer &nextLayer) const;
+	void updateConnectionWeights(Layer &prevLayer);
 	
 	 double randomWeight(void)
 	{
@@ -39,8 +43,12 @@ private:
 		return (1 - x*x);
 	}
 	double outputValue;
+	double gradient;
 	vector<Connection> inputConnections;
 	unsigned myIndex;
+
+	static double eta;
+	static double alpha;
 };
 
 
@@ -55,6 +63,8 @@ public:
 private:
 	vector<Layer> layers; //layers_[layerNum][neuronNum]
 	double error;
+	double recentAverageError;
+	double recentAverageErrorSmoothingFactor;
 
 };
 

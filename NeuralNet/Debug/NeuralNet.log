@@ -1,5 +1,32 @@
-﻿  stdafx.cpp
-  NeuralNet.cpp
+﻿  NeuralNet.cpp
 c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(15): warning C4018: '<': signed/unsigned mismatch
-  NeuralNet.vcxproj -> C:\Users\Oysterr02\Documents\Visual Studio 2015\Projects\NeuralCpp\Debug\NeuralNet.exe
-  NeuralNet.vcxproj -> C:\Users\Oysterr02\Documents\Visual Studio 2015\Projects\NeuralCpp\Debug\NeuralNet.pdb (Full PDB)
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(38): error C2556: 'double Neuron::calcOutputGradients(double)': overloaded function differs only by return type from 'void Neuron::calcOutputGradients(double)'
+  c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.h(26): note: see declaration of 'Neuron::calcOutputGradients'
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(37): error C2371: 'Neuron::calcOutputGradients': redefinition; different basic types
+  c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.h(26): note: see declaration of 'Neuron::calcOutputGradients'
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(105): error C2264: 'Neuron::calcOutputGradients': error in function definition or declaration; function not called
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(116): error C2039: 'calculateHiddenGradients': is not a member of 'std::vector<Neuron,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=Neuron
+          ]
+  c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.h(16): note: see declaration of 'std::vector<Neuron,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=Neuron
+          ]
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(122): error C2059: syntax error: ';'
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(122): error C2059: syntax error: ')'
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(124): error C2065: 'currentLayer': undeclared identifier
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(124): error C2275: 'Layer': illegal use of this type as an expression
+  c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.h(16): note: see declaration of 'Layer'
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(124): error C2059: syntax error: ';'
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(127): error C2065: 'currentLayer': undeclared identifier
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(127): error C2228: left of '.size' must have class/struct/union
+  c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(127): note: type is 'unknown-type'
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(129): error C2065: 'currentLayer': undeclared identifier
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(129): error C2228: left of '.updateConnectionWeights' must have class/struct/union
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(132): error C2059: syntax error: '}'
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(132): error C2143: syntax error: missing ';' before '}'
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(136): error C2143: syntax error: missing ';' before '{'
+c:\users\oysterr02\documents\visual studio 2015\projects\neuralcpp\neuralnet\neuralnet.cpp(136): error C2447: '{': missing function header (old-style formal list?)

@@ -34,6 +34,53 @@ void Neuron::feedForward(const Layer &prevLayer)
 	//cout << "op here --> " << sum << endl;
 }
 
+double Neuron::sumDOW(const Layer &nextLayer) const
+{
+	double sum = 0.0;
+
+	for (unsigned n = 0; n < nextLayer.size() - 1; ++n)
+	{
+		sum += inputConnections[n].weight * nextLayer[n].gradient;
+	}
+
+	return sum;
+		
+}
+
+void Neuron::calcOutputGradients(double targetVal)
+{
+	double delta = targetVal - outputValue;
+	gradient = delta * transferFunctionDerivative(outputValue);
+}
+
+void Neuron::calcHiddenGradients(const Layer &nextLayer)
+{
+	double dow = sumDOW(nextLayer);
+	gradient = dow * transferFunctionDerivative(outputValue);
+}
+
+void Neuron::updateConnectionWeights(Layer &prevLayer)
+{
+	for (unsigned n = 0; n < prevLayer.size(); ++n)
+	{
+		Neuron &neuron = prevLayer[n];
+		double oldDeltaWeight = neuron.inputConnections[myIndex].deltaWeight;
+
+		double newDeltaWeight =
+			eta
+			+ neuron.getOutputValue()
+			+ gradient
+			+ alpha
+			+ oldDeltaWeight;
+
+		neuron.inputConnections[n].deltaWeight = newDeltaWeight;
+		neuron.inputConnections[n].weight += newDeltaWeight;
+	}
+}
+
+double Neuron::eta = 0.15;
+double Neuron::alpha = 0.5;
+
 
 //***************************************	NET	 ****************************************************
 Net::Net(const vector<unsigned> &topology)
@@ -89,6 +136,40 @@ void Net::backprop(const vector<double> &targetValues)
 
 	error = error / (outputLayer.size() - 1);
 	error = sqrt(error);
+
+	//recent average error measurement
+	recentAverageError = (recentAverageError*recentAverageErrorSmoothingFactor + error) / (recentAverageErrorSmoothingFactor + 1.0);
+
+	//output layer gradients
+	for (unsigned n = 0; n < outputLayer.size() - 1; ++n)
+	{
+		outputLayer[n].calcOutputGradients(targetValues[n]);
+	}
+
+	//hidden layer gradients
+	for (unsigned layer = layers.size() - 2; layer > 0; --layer)
+	{
+		Layer &hiddenLayer = layers[layer];
+		Layer &nextLayer = layers[layer + 1];
+
+		for (unsigned n = 0; n < layers[layer].size(); ++n)
+		{
+			hiddenLayer.calcHiddenGradients(nextLayer);
+		}
+	}
+
+	//update connection weights for all layers from output to first hidden one
+
+	for (unsigned layer = layers.size() - 1; layer > -; --layer)
+	{
+		Layer &currentLayer = layers[layer];
+		Layer &prevLayer = layers[layer - 1];
+
+		for (unsigned n = 0; n < currentLayer.size() - 1; ++n)
+		{
+			currentLayer[n].updateConnectionWeights(prevLayer);
+		}
+	}
 }
 
 
